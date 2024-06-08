@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import { FaEdit } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa";
 import defaultimage from "../images/defaultimage.png";
@@ -16,6 +16,8 @@ const UserProfile = () => {
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
   const [error, setError] = useState("");
   const { id } = useParams();
+  const navigate = useNavigate();
+
   const handleAvatarChange = (e) => {
     setAvatar(e.target.files[0]);
   };
@@ -65,7 +67,6 @@ const UserProfile = () => {
         confirmNewPassword,
       };
 
-      // Send PUT request to update profile
       const response = await fetch(`${API_URL}/auth/profile/${id}`, {
         method: "PUT",
         headers: {
@@ -78,8 +79,8 @@ const UserProfile = () => {
       if (!response.ok) {
         throw new Error("Failed to update profile");
       }
-
       console.log("Profile updated successfully");
+      navigate("/");
       setError("");
     } catch (error) {
       console.error("Error updating profile:", error);

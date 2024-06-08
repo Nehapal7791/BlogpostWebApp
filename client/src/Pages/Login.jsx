@@ -65,7 +65,7 @@ const Login = () => {
             autoFocus
           />
           <input
-            type="text"
+            type="password"
             placeholder="Password"
             name="password"
             value={userData.password}

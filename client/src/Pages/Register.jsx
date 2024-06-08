@@ -50,9 +50,9 @@ const Register = () => {
 
       const result = await response.json();
       console.log(result);
-      localStorage.setItem("firstname", result.newUser.firstname);
-      localStorage.setItem("id", result.newUser._id);
-      navigate("/");
+      localStorage.setItem("firstname", result.user.firstname);
+      localStorage.setItem("id", result.user._id);
+      navigate("/login");
     } catch (error) {
       setError(error.message);
     }

@@ -41,6 +41,7 @@ export const signUp = asyncHandler(async (req, res) => {
     avatar,
     MobileNumber,
   });
+
   const token = user.generateToken();
   user.password = undefined;
 
