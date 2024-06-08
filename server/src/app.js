@@ -8,7 +8,9 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: [process.env.LOCAL],
+    origin: [
+      process.env.LOCAL || "https://blogpost-web-app-frontend.vercel.app",
+    ],
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true,
   })
