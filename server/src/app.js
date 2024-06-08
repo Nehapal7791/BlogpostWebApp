@@ -2,12 +2,14 @@ import express, { Router, urlencoded } from "express";
 import cors from "cors";
 import router from "./routers/index.routes.js";
 import cookieParser from "cookie-parser";
+import dotenv from "dotenv";
 
 const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: [process.env.LOCAL],
+    methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true,
   })
 );
